@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #b08d57;
+  color: #14140f;
+}
+
+/* thin scrollbar in the brand's line color */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #14140f;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a382e;
+}
+
+/* film grain, sits above everything, ignores pointer events */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* blueprint grid backdrop used behind hero + section dividers */
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgba(176, 141, 87, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(176, 141, 87, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.corner-tick {
+  position: relative;
+}
+.corner-tick::before,
+.corner-tick::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: #b08d57;
+  opacity: 0.6;
+}
+.corner-tick::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.corner-tick::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
