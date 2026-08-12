@@ -30,7 +30,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: atelier
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Build static website
         working-directory: atelier
